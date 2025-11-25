@@ -10,6 +10,7 @@ import numpy as np
 import time
 import matplotlib as mpl
 import sklearn
+import plotly
 import plotly.figure_factory as ff
 import plotly.express as px
 import plotly.graph_objects as go
@@ -44,31 +45,8 @@ st.set_page_config(
 st.markdown(
 """
     <style>
-    /* SELECTBOX */
-    .stSelectbox label {
-        font-size: 16px !important;
-        font-weight: 500 !important;
-        color: #391550 !important;
-    }
-    /* INFO BOX COLOR CUSTOMIZATION */
-    div[data-testid="stInfo"] {
-        border-left: 6px solid #0747d4 !important;
-        background-color: #F0F2F6 !important;
-        color: #391550 !important;
-    }
-    /* Custom highlight box (placeholder) */
+    /* Highlight analysis box */
     .highlight-box {
-        border-left: 6px solid #F0F2F6;
-        background-color: #FFFFFF;
-        color: black;
-        padding: 12px 16px;
-        border-radius: 20px;
-        margin: 5px 5px;
-        font-size: 15px;;
-    }
-
-    /* Author analysis box */
-    .author-box {
         border-left: 6px solid #0747d4;
         background-color: #F0F2F6;
         color: black;
@@ -76,17 +54,6 @@ st.markdown(
         border-radius: 6px;
         margin: 8px 0;
         font-size: 14.5px;
-    }
-
-    /* Custom danger box */
-    .danger-box {
-        border-left: 6px solid #FFA500;
-        background-color: #F9D590;
-        color: black;
-        padding: 12px 16px;
-        border-radius: 6px;
-        margin: 5px 5px;
-        font-size: 15px;;
     }
 
     </style>
@@ -267,12 +234,51 @@ def statistics():
 
 def eda_page():
     st.header("📈 Exploratory Data Analysis")
+    features=['Age', 'Gender', 'Ethnicity', 'EducationLevel', 'BMI', 'Smoking',
+       'AlcoholConsumption', 'PhysicalActivity', 'DietQuality', 'SleepQuality',
+       'FamilyHistoryParkinsons', 'TraumaticBrainInjury', 'Hypertension',
+       'Diabetes', 'Depression', 'Stroke', 'SystolicBP', 'DiastolicBP',
+       'CholesterolTotal', 'CholesterolLDL', 'CholesterolHDL',
+       'CholesterolTriglycerides', 'UPDRS', 'MoCA', 'FunctionalAssessment',
+       'Tremor', 'Rigidity', 'Bradykinesia', 'PosturalInstability',
+       'SpeechProblems', 'SleepDisorders', 'Constipation', 'Diagnosis']
+    graph=st.radio("Select graphical visualization",["Diagnosis Balance Barplot", "Correlation Heatmap","Categorical Features Representation by Diagnosis","Numerical Features Scatter"],index=1,)
+    if graph=="Correlation Heatmap":
+        fig = ff.create_annotated_heatmap(z=train_df.corr().values,x=features,y=features,showscale=True,annotation_text=train_df.corr().values.round(1),xgap=2,ygap=2,visible=True,colorscale=plotly.colors.diverging.Picnic,
+                                                zmin=-1,zmax=1,colorbar=dict(title=dict(text="Pearson correlation coefficient",side="top")),font_colors=["black"])
+        fig.update_layout(xaxis=dict(side="bottom"),title=dict(text="Correlation Heatmap",x=0.5,xanchor='center',font=dict(size=25)))
+        fig.layout.height = 800
+        st.plotly_chart(fig, use_container_width=True) 
+        with st.expander(label="Show expanded correlations between features and target"):
+            cmap = mpl.colormaps['bwr']
+            col1, col2, col3 = st.columns(3)
+            with col2:
+                st.image("./img/colorbar.png",use_container_width=True)
+                st.dataframe(train_df.corr().iloc[-1,0:-2].to_frame().sort_values(by="Diagnosis",ascending=False).style.background_gradient(cmap=cmap, axis=0,vmin=-1,vmax=1),height=1150)
 
+    if graph=="Diagnosis Balance Barplot":
+        diagnosis_percentage=(train_df.Diagnosis.value_counts(normalize=True,ascending=True)*100)
+        diagnosis_percentage.index=["No PD","PD"]
+        diagnosis_percentage.name="Percentage (%)"
+        fig = px.pie(diagnosis_percentage,values="Percentage (%)",names=["Parkinson's Disease Patients","Healthy Patients"], title="Percentage of Parkinson's Disease (PD) Patients and Healthy Patients")
+        st.plotly_chart(fig, use_container_width=True) 
+    if graph=="Categorical Features Representation by Diagnosis":
+        cat=st.selectbox("Choose the categorical feature to study",['Smoking', 'Family History Parkinsons', 'Traumatic Brain Injury','Hypertension', 'Diabetes', 'Depression', 'Stroke','Tremor', 'Rigidity', 'Bradykinesia', 'Postural Instability','Speech Problems', 'Sleep Disorders', 'Constipation'])
+        if cat == 'Family History Parkinsons':
+            cat='FamilyHistoryParkinsons'
+        if cat == 'Traumatic Brain Injury':
+            cat = 'TraumaticBrainInjury'
+        if cat == 'Postural Instability':
+            cat = 'PosturalInstability'
+        if cat == 'Speech Problems':
+            cat='SpeechProblems'
+        if cat == 'Sleep Disorders':
+            cat='SleepDisorders'
 def prediction_page():
     st.header("🎯 Interactive Predictions")
     help_message="**Accuracy score** meassure the **pertange of correct predictions** in comparison with all the predictions whereas **sensitibity score** describe per **percentage of patients with Parkinson's Disease detected**"
     st.markdown("")
-    num_model=st.radio("Choose the predictive model",["**Model 1** (accuracy oriented model)", "**Model 2** (sensitivity oriented model)"],index=0,horizontal=True,help=help_message)
+    num_model=st.segmented_control("Choose the predictive model",["**Model 1** (accuracy oriented model)", "**Model 2** (sensitivity oriented model)"],help=help_message)
     if num_model == "**Model 1** (accuracy oriented model)":
         selected_model=model1
     if num_model == "**Model 2** (sensitivity oriented model)":
@@ -422,12 +428,39 @@ def prediction_page():
                 Nevertheless, based on the submited data **we strongly encourage the patient to visit a specialized medical professional** 
             """)
         else:
-            st.success("According to the submited data the patients is predicted to be **Health** (Status **0**)")
+            st.success("According to the submited data the patients is predicted to be **Healthy** (Status **0**)")
             probability=selected_model.predict_proba([input])[0,0]
             st.metric(label="Estimated Probability (Status 0)", value=f"{np.round(probability*100)}%")
             st.info(""" The model sugest a negative results. Anyways the predictions are based on model trained with a synthetic dataset. Consenquenty, **these results should not replace specialized medical attention**""")
+    st.markdown("---")
+    with st.expander("Upload your own dataset in csv format",expanded=False):
+        st.markdown("In this section you predict the diagnosis of multiple patients with uploading your own dataset in csv format")
+        st.markdown("")
+        st.warning("The imported data must have the following columns names and order: Age, Gender, Ethnicity, EducationLevel, BMI, Smoking,AlcoholConsumption, PhysicalActivity, DietQuality, SleepQuality,FamilyHistoryParkinsons, TraumaticBrainInjury, Hypertension,Diabetes, Depression, Stroke, SystolicBP, DiastolicBP,CholesterolTotal, CholesterolLDL, CholesterolHDL,CholesterolTriglycerides, UPDRS, MoCA, FunctionalAssessment,Tremor, Rigidity, Bradykinesia, PosturalInstability,SpeechProblems, SleepDisorders, Constipation,")
+        uploaded_file = st.file_uploader("",accept_multiple_files=False, type="csv")
+        if uploaded_file is not None:
+            input_df = pd.read_csv(uploaded_file)
+            num_input_model=st.segmented_control("Choose the predictive model:",["**Model 1** (accuracy oriented)", "**Model 2** (sensitivity oriented)"],help=help_message,key="input_ML")
+            if num_input_model == "**Model 1** (accuracy oriented)":
+                input_model=model1
+            if num_input_model == "**Model 2** (sensitivity oriented)":
+                input_model=model2 
+            if num_input_model is not None:
+                if st.button("Predict CSV", type="primary", use_container_width=True):
+                    try:
+                        predictions=input_model.predict(input_df)
+                        st.markdown("""Predictions Map:   
+                                    
+                                         0 --> Healthy Patient 
 
-
+                                         1 --> Parkison's Disease Patient""")
+                        col1,col2,col3=st.columns([8,9,9],gap="large")
+                        with col2:
+                            st.dataframe(predictions)
+                        st.markdown('''*Note: you can download the raw data by clicking on download as csv icon ➜], for searching numbers in the dataframe click the search icon 🔍. Aditionally you can view the dataframe on full screen by clicking ⛶*''')
+                        st.info(""" The predictions are based on model trained with a synthetic dataset. Consenquenty, **these results should not replace specialized medical attention**""")
+                    except:
+                        st.error("Uploaded data does not follow the described format")
 
 def author_page():
     st.header("🙋🏻‍♀️ About the Author")
@@ -507,4 +540,3 @@ elif selection == "🙋🏻‍♀️ About the Author":
 # ---------- FOOTER ----------
 st.markdown("---")
 st.markdown("<p style='text-align: center; color: gray; font-size: 1em;'>© 2025 Parkinson's Disease Predictive Machine Learning Model EDA — Luna Pérez Troncoso </p>",unsafe_allow_html=True)
-
