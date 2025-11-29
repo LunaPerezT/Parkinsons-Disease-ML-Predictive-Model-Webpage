@@ -56,3 +56,40 @@ Python dependencies required to run the project.
 Install with:
 ```bash
 pip install -r requirements.txt
+```
+   
+---
+   
+## 🚀 Getting Started
+
+Follow these steps on your git bash to set up and run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/LunaPerezT/Parkinsons-Disease-ML-Predictive-Model-Webpage.git
+cd Parkinsons-Disease-ML-Predictive-Model-Webpage
+```
+   
+### 2. (Optional) Create and Activate a Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate       # Linux / macOS
+venv\Scripts\activate          # Windows
+```
+
+### 3. Install Dependencies
+    
+```bash
+pip install -r requirements.txt
+```
+    
+### 4. Run the Web Application
+   
+```bash
+python app.py
+```
+    
+
+
