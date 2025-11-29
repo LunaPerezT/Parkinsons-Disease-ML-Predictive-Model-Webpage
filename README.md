@@ -11,14 +11,14 @@ The project integrates a trained ML model with an accessible web interface, maki
      
 ## 🌐 Repository Structure Overview
 
-Parkinsons-Disease-ML-Predictive-Model-Webpage/
-├── data/
-├── models/
-├── img/
-├── static/
-├── app.py
-├── requirements.txt
-└── README.md
+Parkinsons-Disease-ML-Predictive-Model-Webpage/   
+├── data/   
+├── models/  
+├── img/  
+├── static/  
+├── app.py  
+├── requirements.txt  
+└── README.md  
 
 
 Below is the structure with links and descriptions:
@@ -26,7 +26,7 @@ Below is the structure with links and descriptions:
 ### 📁 Folders
 
 #### [`/data`](./data)
-Contains example datasets or testing data used for model inference or demonstration inside the web interface.
+Contains raw, processed, datasets or testing data used for model inference or demonstration inside the web interface.
 
 #### [`/models`](./models)
 Stores trained machine-learning models in Pickle format(`.pkl`).
@@ -35,8 +35,10 @@ Stores trained machine-learning models in Pickle format(`.pkl`).
 Images displayed within the webpage (logos, UI elements, figures).
 
 #### [`/static`](./static)
-Static frontend assets such as CSS, JavaScript, icons, and fonts.
+Font collection as static frontend assets.
 
+#### [`/.streamlit`](./.streamlit)
+`config.toml` file that defines configuration options of the app
 ---
 
 ### 📄 Files
