@@ -88,8 +88,10 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-
-##🙋🏻‍♀️ About the Author
+    
+---
+     
+## 🙋🏻‍♀️ About the Author
     
 I’m **Luna Pérez Troncoso**, a **Data Scientist** with a strong foundation in **Artificial Intelligence, data analytics, and computational modeling**, originally shaped through my background in **science and research**. Over time, I’ve transitioned my **analytical and experimental mindset** into the tech field, where I design **data-driven solutions** that **transform complex information into actionable insights**.
          
