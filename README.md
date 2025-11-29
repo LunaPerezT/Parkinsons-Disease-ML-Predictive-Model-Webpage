@@ -6,9 +6,9 @@ The project integrates a trained ML model with an accessible web interface, maki
 [***VISIT THE WEBPAGE HERE**](https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/)
 
 > ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.
-
+     
 ---
-
+     
 ## 🌐 Repository Structure Overview
 
 Parkinsons-Disease-ML-Predictive-Model-Webpage/
