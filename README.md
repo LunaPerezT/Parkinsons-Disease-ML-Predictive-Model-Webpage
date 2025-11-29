@@ -31,7 +31,8 @@ Below is the structure with links and descriptions:
 Contains raw, processed, datasets or testing data used for model inference or demonstration inside the web interface.
 
 #### [`/models`](./models)
-Stores trained machine-learning models in Pickle format(`.pkl`).
+Stores trained machine-learning models in Pickle format(`.pkl`).   
+   
 *You can explore the exploratory data analysis, model development and presentation in this [github repository](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/tree/main/docs)*
 
 #### [`/img`](./img)
