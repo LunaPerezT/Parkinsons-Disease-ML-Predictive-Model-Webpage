@@ -5,8 +5,8 @@ The project integrates a trained ML model with an accessible web interface, maki
 
 [***VISIT THE WEBPAGE HERE**](https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/)
 
-> ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.
-     
+> ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.         
+*You can explore the exploratory data analysis, model development and presentation in this [github repository](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/tree/main/docs)*
 ---
      
 ## 🌐 Repository Structure Overview
@@ -30,6 +30,7 @@ Contains raw, processed, datasets or testing data used for model inference or de
 
 #### [`/models`](./models)
 Stores trained machine-learning models in Pickle format(`.pkl`).
+*You can explore the exploratory data analysis, model development and presentation in this [github repository](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/tree/main/docs)*
 
 #### [`/img`](./img)
 Images displayed within the webpage (logos, UI elements, figures).
@@ -37,9 +38,8 @@ Images displayed within the webpage (logos, UI elements, figures).
 #### [`/static`](./static)
 Font collection as static frontend assets.
 
-#### [`/.streamlit`](./.streamlit)
-`config.toml` file that defines configuration options of the app
----
+#### [`/.streamlit`](./.streamlit)  
+Configuration options of the app defined in a `config.toml` file.
 
 ### 📄 Files
 
