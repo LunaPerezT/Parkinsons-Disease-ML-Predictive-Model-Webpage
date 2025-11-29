@@ -4,7 +4,7 @@ A lightweight web application that provides **machine-learning–based predictio
 The project integrates a trained ML model with an accessible web interface, making it ideal for demonstration, research exploration, and educational use.
     
 <div style="text-align: center;"> 
-    <a href="https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/">**VISIT THE WEBPAGE HERE**</a>
+    <a style="text-align: center;href="https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/">**VISIT THE WEBPAGE HERE**</a>
 </div>  
 
 > ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.
