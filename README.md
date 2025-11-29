@@ -101,5 +101,5 @@ What defines my approach is a balance between **technical precision and creativi
  <img src="./img/linkedin.jpg" alt="linkedin" width="200"/>
 </a>
    
-Visit my [linkedIn profile](https://www.linkedin.com/in/luna-p%C3%A9rez-troncoso-0ab21929b/)
+Visit my [LinkedIn profile](https://www.linkedin.com/in/luna-p%C3%A9rez-troncoso-0ab21929b/)
 
