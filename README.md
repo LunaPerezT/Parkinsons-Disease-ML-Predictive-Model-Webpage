@@ -14,7 +14,8 @@ The project integrates a trained ML model with an accessible web interface, maki
      
 ## 🌐 Repository Structure Overview
 
-Parkinsons-Disease-ML-Predictive-Model-Webpage/   
+Parkinsons-Disease-ML-Predictive-Model-Webpage/  
+├── .streamlit/
 ├── data/   
 ├── models/  
 ├── img/  
@@ -28,6 +29,9 @@ Below is the structure with links and descriptions:
 
 ### 📁 Folders
 
+#### [`/.streamlit`](./.streamlit)  
+Configuration options of the app defined in a `config.toml` file.
+   
 #### [`/data`](./data)
 Contains raw, processed, datasets or testing data used for model inference or demonstration inside the web interface.
 
@@ -42,8 +46,6 @@ Images displayed within the webpage (logos, UI elements, figures).
 #### [`/static`](./static)
 Font collection as static frontend assets.
 
-#### [`/.streamlit`](./.streamlit)  
-Configuration options of the app defined in a `config.toml` file.
 
 ### 📄 Files
 
