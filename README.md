@@ -16,10 +16,10 @@ The project integrates a trained ML model with an accessible web interface, maki
 
 Parkinsons-Disease-ML-Predictive-Model-Webpage/  
 ├── .streamlit/   
-├── data/ 
-├── img/
-├── models/  
-├── static/  
+├── data/    
+├── img/     
+├── models/       
+├── static/      
 ├── README.md    
 ├── app.py    
 └── requirements.txt    
