@@ -5,7 +5,7 @@ The project integrates a trained ML model with an accessible web interface, maki
     
 <div style="text-align: center;"> 
     
-[**VISIT THE WEBPAGE HERE**](https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/)
+![**VISIT THE WEBPAGE HERE**](https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/)
 
 </div>  
 
