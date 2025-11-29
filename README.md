@@ -1,11 +1,11 @@
 # Parkinsons-Disease-ML-Predictive-Model-Webpage
 
 A lightweight web application that provides **machine-learning–based predictions for Parkinson’s disease** using patient data with a **97% of accuracy**.  
+*You can explore the exploratory data analysis, model development and presentation in this [github repository](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/tree/main/docs)*   
 The project integrates a trained ML model with an accessible web interface, making it ideal for demonstration, research exploration, and educational use. [**VISIT THE WEBPAGE HERE**](https://parkinsons-disease-ml-predictive-model-webpage.streamlit.app/") 
 
 > ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.
-      
-*You can explore the exploratory data analysis, model development and presentation in this [github repository](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/tree/main/docs)*    
+
     
 ---
      
