@@ -98,4 +98,4 @@ I have experience working across the **full data pipeline**, from data acquisiti
 What defines my approach is a balance between **technical precision and creativity**. I’m passionate about **connecting raw data with real-world** impact, collaborating with **cross-functional teams**, and communicating insights in a way that drives innovation.
 
 Visit my [linkedIn profile](https://www.linkedin.com/in/luna-p%C3%A9rez-troncoso-0ab21929b/)
-![](./img/linkedin.jpg)
+<img src="./img/linkedin.jpg" alt="linkedin" width="200"/>
