@@ -242,7 +242,7 @@ def eda_page():
        'CholesterolTriglycerides', 'UPDRS', 'MoCA', 'FunctionalAssessment',
        'Tremor', 'Rigidity', 'Bradykinesia', 'PosturalInstability',
        'SpeechProblems', 'SleepDisorders', 'Constipation', 'Diagnosis']
-    graph=st.radio("Select graphical visualization",["Diagnosis Balance Barplot", "Correlation Heatmap","Categorical Features Representation by Diagnosis","Numerical Features Scatter"],index=1,)
+    graph=st.radio("Select graphical visualization",["Diagnosis (target) Balance", "Correlation Heatmap","Categorical Features Representation by Diagnosis","Numerical Features Scatter"],index=0)
     if graph=="Correlation Heatmap":
         fig = ff.create_annotated_heatmap(z=train_df.corr().values,x=features,y=features,showscale=True,annotation_text=train_df.corr().values.round(1),xgap=2,ygap=2,visible=True,colorscale=plotly.colors.diverging.Picnic,
                                                 zmin=-1,zmax=1,colorbar=dict(title=dict(text="Pearson correlation coefficient",side="top")),font_colors=["black"])
@@ -256,29 +256,79 @@ def eda_page():
                 st.image("./img/colorbar.png",use_container_width=True)
                 st.dataframe(train_df.corr().iloc[-1,0:-2].to_frame().sort_values(by="Diagnosis",ascending=False).style.background_gradient(cmap=cmap, axis=0,vmin=-1,vmax=1),height=1150)
 
-    if graph=="Diagnosis Balance Barplot":
+    if graph=="Diagnosis (target) Balance":
         diagnosis_percentage=(train_df.Diagnosis.value_counts(normalize=True,ascending=True)*100)
         diagnosis_percentage.index=["No PD","PD"]
         diagnosis_percentage.name="Percentage (%)"
-        fig = px.pie(diagnosis_percentage,values="Percentage (%)",names=["Parkinson's Disease Patients","Healthy Patients"], title="Percentage of Parkinson's Disease (PD) Patients and Healthy Patients")
-        st.plotly_chart(fig, use_container_width=True) 
+        fig = px.pie(diagnosis_percentage,values="Percentage (%)",names=["Parkinson's Disease Patients","Healthy Patients"], title="Percentage of Parkinson's Disease (PD) Patients and Healthy Patients",height=700)
+        col1,col2,col3=st.columns([1,5,1])
+        with col2:
+            st.plotly_chart(fig, use_container_width=True) 
     if graph=="Categorical Features Representation by Diagnosis":
-        cat=st.selectbox("Choose the categorical feature to study",['Smoking', 'Family History Parkinsons', 'Traumatic Brain Injury','Hypertension', 'Diabetes', 'Depression', 'Stroke','Tremor', 'Rigidity', 'Bradykinesia', 'Postural Instability','Speech Problems', 'Sleep Disorders', 'Constipation'])
-        if cat == 'Family History Parkinsons':
+        cat_input=st.selectbox("Choose the categorical feature to study",['Smoking', 'Gender','EducationLevel','Ethnicity','Family History Parkinsons', 'Traumatic Brain Injury','Hypertension', 'Diabetes', 'Depression', 'Stroke','Tremor', 'Rigidity', 'Bradykinesia', 'Postural Instability','Speech Problems', 'Sleep Disorders', 'Constipation'])
+        if cat_input == 'Family History Parkinsons':
             cat='FamilyHistoryParkinsons'
-        if cat == 'Traumatic Brain Injury':
+        elif cat_input == 'Traumatic Brain Injury':
             cat = 'TraumaticBrainInjury'
-        if cat == 'Postural Instability':
+        elif cat_input == 'Postural Instability':
             cat = 'PosturalInstability'
-        if cat == 'Speech Problems':
+        elif cat_input == 'Speech Problems':
             cat='SpeechProblems'
-        if cat == 'Sleep Disorders':
+        elif cat_input== 'Sleep Disorders':
             cat='SleepDisorders'
+        else:
+            cat=cat_input
+        if cat_input in ['Smoking', 'Family History Parkinsons', 'Traumatic Brain Injury','Hypertension', 'Diabetes', 'Depression', 'Stroke','Tremor', 'Rigidity', 'Bradykinesia', 'Postural Instability','Speech Problems', 'Sleep Disorders', 'Constipation','Gender']:
+            df_plot_both=(train_df[train_df.Diagnosis==1][cat].value_counts(normalize=True).sort_index()*100).to_list()
+            df_plot_both.extend((train_df[train_df.Diagnosis==0][cat].value_counts(normalize=True).sort_index()*100).to_list())
+            df_plot=pd.DataFrame({"Diagnosis":["No PD","No PD","PD","PD"],"value":df_plot_both,"category":["No "+cat_input,cat_input,"No "+cat_input,cat_input]})
+        elif cat=="Gender":
+            df_plot_both=(train_df[train_df.Diagnosis==1]["Gender"].value_counts(normalize=True,sort=False).sort_index()*100).to_list()
+            df_plot_both.extend((train_df[train_df.Diagnosis==0]["Gender"].value_counts(normalize=True,sort=False).sort_index()*100).to_list())
+            df_plot=pd.DataFrame({"Diagnosis":["No PD","No PD","PD","PD"],"value":df_plot_both,"category":["Male","Female","Male","Female"]})
+        elif cat=="Ethnicity":
+            df_plot_both=(train_df[train_df.Diagnosis==1]['Ethnicity'].value_counts(normalize=True).sort_index()*100).to_list()
+            df_plot_both.extend((train_df[train_df.Diagnosis==0]['Ethnicity'].value_counts(normalize=True).sort_index()*100).to_list())
+            df_plot=pd.DataFrame({"Diagnosis":["No PD","No PD","No PD","No PD","PD","PD","PD","PD"],"value":df_plot_both,"category":["Caucasian", "African American","Asian","Other","Caucasian", "African American","Asian","Other"]})
+        elif cat=="EducationLevel":
+            df_plot_both=(train_df[train_df.Diagnosis==1]['EducationLevel'].value_counts(normalize=True,sort=False)*100).to_list()
+            df_plot_both.extend((train_df[train_df.Diagnosis==0]['EducationLevel'].value_counts(normalize=True,sort=False)*100).to_list())
+            df_plot=pd.DataFrame({"Diagnosis":["No PD","No PD","No PD","No PD","PD","PD","PD","PD"],"value":df_plot_both,"category":["None", "High School", "Bachelor's","Higher","None", "High School", "Bachelor's","Higher"]})
+        fig=px.bar(df_plot,x="Diagnosis",y="value",color="category",title=f"Percentage of {cat_input} by Diagnosis",height=700)
+        fig.update_layout(yaxis=dict(title=dict(text="Percentage (%)")))
+        col1,col2,col3=st.columns([1,5,1])
+        with col2:
+            st.plotly_chart(fig)
+    if graph=="Numerical Features Scatter":
+        num_features=["Age","BMI","Alcohol Consumption","Physical Activity","Diet Quality","Sleep Quality","Cholesterol Total","Cholesterol LDL","Cholesterol HDL","Cholesterol Triglycerides","UPDRS","MoCA","Functional Assessment","Diagnosis"]
+        x=st.pills("Select x axis", num_features)
+        if x != None:
+            x_data=x.replace(" ","")
+            num_features_y=num_features
+            num_features_y.remove(x)
+            y=st.pills("Select y axis", num_features_y)
+            if y != None:
+                y_data=y.replace(" ","")
+                col1,col2,col3 =st.columns([1,5,1],gap="large")
+                if x_data=="Diagnosis":
+                    with col2:
+                        fig = px.violin(train_df, x=x_data,y=y_data, box=True,height=700,title=f"{y} distribution by diagnosis violin plot")
+                        fig.update_layout(xaxis=dict(title=dict(text=x)),yaxis=dict(title=dict(text=y)))
+                        st.plotly_chart(fig)
+                elif y_data=="Diagnosis":
+                    with col2:
+                        fig = px.violin(train_df, x=x_data,y=y_data,orientation="h", box=True,height=700,title=f"{y} distribution by diagnosis violin plot")
+                        st.plotly_chart(fig)
+                else:
+                    with col2:
+                        fig = px.scatter(train_df,x=x_data, y=y_data,trendline="ols",trendline_color_override="red",height=700,title=f"{x} vs {y} Scatterplot ")
+                        st.plotly_chart(fig,use_container_width=True)
+
 def prediction_page():
     st.header("🎯 Interactive Predictions")
     help_message="**Accuracy score** meassure the **pertange of correct predictions** in comparison with all the predictions whereas **sensitibity score** describe per **percentage of patients with Parkinson's Disease detected**"
     st.markdown("")
-    num_model=st.segmented_control("Choose the predictive model",["**Model 1** (accuracy oriented model)", "**Model 2** (sensitivity oriented model)"],help=help_message)
+    num_model=st.segmented_control("Choose the predictive model",["**Model 1** (accuracy oriented model)", "**Model 2** (sensitivity oriented model)"],help=help_message,default="**Model 1** (accuracy oriented model)")
     if num_model == "**Model 1** (accuracy oriented model)":
         selected_model=model1
     if num_model == "**Model 2** (sensitivity oriented model)":
