@@ -29,7 +29,7 @@ Below is the structure with links and descriptions:
 Contains example datasets or testing data used for model inference or demonstration inside the web interface.
 
 #### [`/models`](./models)
-Stores trained machine-learning models (e.g., `.pkl`, `.sav`, etc.).
+Stores trained machine-learning models in Pickle format(`.pkl`).
 
 #### [`/img`](./img)
 Images displayed within the webpage (logos, UI elements, figures).
