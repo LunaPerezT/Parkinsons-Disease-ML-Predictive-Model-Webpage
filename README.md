@@ -92,7 +92,7 @@ pip install -r requirements.txt
 ### 4. Run the Web Application
    
 ```bash
-python app.py
+streamlit run app.py
 ```
     
 ---
