@@ -88,7 +88,9 @@ This website is organized into several sections to support a structured and tran
      
 This structure aims to ensure clarity, methodological rigor, and full reproducibility, offering a complete and transparent perspective on the development and evaluation of a machine learning–based predictive model for Parkinson’s disease.
     """)
-    
+    with open("./docs/Technical_Presentation_PD_ML_Project.pdf", "rb") as file:
+        st.pdf(file.read(), height=700)
+
 def introduction_page():
     st.header("📚 Introduction")
     
