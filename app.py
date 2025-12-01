@@ -514,6 +514,7 @@ def prediction_page():
                         st.error("Uploaded data does not follow the described format")
 
 def pdf_page():
+    st.header("👩‍🏫 Presentations: Architecture and Scores")
     presentation=st.segmented_control("Show:",["**Technical Presentation PDF**", "**Business Presentation PDF**"],default="**Technical Presentation PDF**")
     if presentation=="**Technical Presentation PDF**":
         st.pdf("./docs/Technical Presentation PD ML Project.pdf")
@@ -577,8 +578,7 @@ selection = st.sidebar.radio("Select Section:",
         "📊 General Statistics",
         "📈 Exploratory Data Analysis",
         "🎯 Interactive Predictions",
-        "💻 Model Architecture and Scores",
-        "👩‍🏫 Presentations",
+        "👩‍🏫 Presentations: Architecture and Scores",
         "🙋🏻‍♀️ About the Author"),index=0)
    
 # ---------- APP BODY ----------
@@ -596,7 +596,7 @@ elif selection == "📈 Exploratory Data Analysis":
     eda_page()
 elif selection == "🎯 Interactive Predictions":
     prediction_page()
-elif selection == "👩‍🏫 Presentations":
+elif selection == "👩‍🏫 Presentations: Architecture and Scores":
     pdf_page()
 elif selection == "🙋🏻‍♀️ About the Author":   
     author_page()
