@@ -5,6 +5,7 @@
 
 
 import streamlit as st
+from streamlit import pdf
 import pandas as pd
 import numpy as np
 import time
@@ -512,6 +513,15 @@ def prediction_page():
                     except:
                         st.error("Uploaded data does not follow the described format")
 
+def pdf_page():
+    presentation=st.segmented_control("Show:",["**Technical Presentation PDF**", "**Business Presentation PDF**"],default="**Technical Presentation PDF**")
+    if presentation=="**Technical Presentation PDF**":
+        st.pdf("./docs/Technical Presentation PD ML Project.pdf")
+        st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Technical%20Presentation%20PD%20ML%20Project.pptx)")
+    else:
+        st.pdf("./docs/Business Presentation PD ML Project.pdf")
+        st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Business%20Presentation%20PD%20ML%20Project.pptx)")
+
 def author_page():
     st.header("🙋🏻‍♀️ About the Author")
     st.markdown('''
@@ -567,6 +577,8 @@ selection = st.sidebar.radio("Select Section:",
         "📊 General Statistics",
         "📈 Exploratory Data Analysis",
         "🎯 Interactive Predictions",
+        "💻 Model Architecture and Scores",
+        "👩‍🏫 Presentations",
         "🙋🏻‍♀️ About the Author"),index=0)
    
 # ---------- APP BODY ----------
@@ -584,6 +596,8 @@ elif selection == "📈 Exploratory Data Analysis":
     eda_page()
 elif selection == "🎯 Interactive Predictions":
     prediction_page()
+elif selection == "👩‍🏫 Presentations":
+    pdf_page()
 elif selection == "🙋🏻‍♀️ About the Author":   
     author_page()
     
