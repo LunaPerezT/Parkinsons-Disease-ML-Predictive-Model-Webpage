@@ -223,7 +223,6 @@ Overall, the use of synthetic data enabled a balance between **ethical responsib
 
 
 def raw_data_page():
-    st.markdown(" In this page you can see the complete raw dataset that was employed for this proyect:**")
     st.header("📂 Raw Data")
     st.dataframe(raw)
     st.markdown('''*Note: you can download the raw data by clicking on download as csv icon ➜], for searching numbers in the dataframe click the search icon 🔍. Aditionally you can view the dataframe on full screen by clicking ⛶*''')
@@ -334,6 +333,16 @@ def prediction_page():
         selected_model=model1
     if num_model == "**Model 2** (sensitivity oriented model)":
         selected_model=model2
+    a,b,c=st.columns (3)
+    with a:
+        with st.container():
+            st.metrics("Accuracy","96,9%")
+    with b:
+        with st.container():
+            st.metrics("Specificity","95,7%")
+    with c:
+        with st.container():
+                st.metrics("Sensitivity","97,7%")
     st.markdown("Explore more details of the ML predictive model develpment and scores on this [**github repository**](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model)")
     GENDER_MAP = {"Male": 0, "Female": 1}
     ETHNICITY_MAP = {"Caucasian": 0, "African American": 1, "Asian": 2, "Other": 3}
