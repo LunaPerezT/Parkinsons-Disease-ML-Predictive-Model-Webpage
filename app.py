@@ -91,8 +91,6 @@ This structure aims to ensure clarity, methodological rigor, and full reproducib
 
 def introduction_page():
     st.header("📚 Introduction")
-    with open("./docs/Technical_Presentation_PD_ML_Project.pdf", "rb") as file:
-        st.pdf(file.read(), height=700)   
     st.markdown("""
 <h5 style="text-align: center;color: black;"> <b>What Is Parkinson’s Disease?</b></h5>
                   
