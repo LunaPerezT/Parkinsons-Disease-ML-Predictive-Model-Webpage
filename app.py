@@ -333,7 +333,7 @@ def prediction_page():
         selected_model=model1
     if num_model == "**Model 2** (sensitivity oriented model)":
         selected_model=model2
-    a,b,c,d,e=st.columns(5,gap="large",vertical_alignment= "center")
+    a,b,c,d,e,f=st.columns(6,gap="large",vertical_alignment= "center")
     with a:
         with st.container(border=True):
             st.metric("Accuracy","96.9%")
