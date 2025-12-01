@@ -307,7 +307,7 @@ def eda_page():
             x_data=x.replace(" ","")
             num_features_y=num_features
             num_features_y.remove(x)
-            y=st.pills("Select y axis", num_features_y, default="UPDRS")
+            y=st.pills("Select y axis", num_features_y)
             if y != None:
                 y_data=y.replace(" ","")
                 col1,col2,col3 =st.columns([1,5,1],gap="large")
