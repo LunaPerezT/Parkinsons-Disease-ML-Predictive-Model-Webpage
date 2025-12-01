@@ -336,13 +336,13 @@ def prediction_page():
     a,b,c=st.columns (3)
     with a:
         with st.container():
-            st.metrics("Accuracy","96.9%")
+            st.metric("Accuracy","96.9%")
     with b:
         with st.container():
-            st.metrics("Specificity","95.7%")
+            st.metric("Specificity","95.7%")
     with c:
         with st.container():
-            st.metrics("Sensitivity","97.7%")
+            st.metric("Sensitivity","97.7%")
     st.markdown("Explore more details of the ML predictive model develpment and scores on this [**github repository**](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model)")
     GENDER_MAP = {"Male": 0, "Female": 1}
     ETHNICITY_MAP = {"Caucasian": 0, "African American": 1, "Asian": 2, "Other": 3}
