@@ -9,6 +9,33 @@ The project integrates a trained ML model with an accessible web interface, maki
     
 > ⚠️ **Disclaimer**: This tool is NOT intended for clinical diagnosis. It is for research and prototyping purposes only.
 
+---
+
+## 📚 Introduction   
+
+<h5 style="text-align: center;color: black;"> <b>What Is Parkinson’s Disease?</b></h5>
+                  
+Parkinson’s disease (PD) is a **progressive neurodegenerative disorder** that primarily affects the brain regions responsible for movement control. It occurs when the neurons that produce **dopamine**, a key neurotransmitter involved in coordinating smooth and balanced muscle activity, begin to deteriorate over time.
+
+The condition is typically characterized by a combination of **motor symptoms**, such as tremor, muscle rigidity, bradykinesia (slowness of movement), and postural instability. Many individuals also experience **non-motor symptoms**, including sleep disturbances, cognitive changes, mood alterations, and autonomic dysfunction.
+
+Although the exact cause of Parkinson’s disease remains unknown, research suggests a multifactorial origin involving **genetic**, **environmental**, and **age-related** factors. While there is currently no cure, early detection and comprehensive clinical management can significantly improve quality of life and slow symptom progression.
+
+<h5 style="text-align: center;color: black;"> <b>Why Early Detection Is Crucial in Parkinson’s Disease?</b></h5>    
+                   
+The **early detection of PD** is a growing priority within both clinical practice and research, as the condition often progresses silently before clear symptoms emerge. Despite advances in medical imaging and neurological assessment, **many individuals remain undiagnosed until the disease has already progressed**, limiting the effectiveness of available therapeutic interventions. Consequently, **timely diagnosis** can significantly **influence patient outcomes and long-term quality of life**. Developing a **predictive model** for Parkinson’s disease therefore represents a crucial step toward identifying individuals at risk long before traditional diagnostic criteria are met.
+
+<h5 style="text-align: center;color: black;"> <b>Why develop a machine learning–based predictive model?</b></h5>  
+                     
+A reliable predictive system has the potential to support clinicians in recognizing subtle signs that might otherwise go unnoticed. Early identification could allow for **timelier monitoring, lifestyle adjustments, and targeted therapeutic strategies** that may slow **disease progression or improve quality of life**. Additionally, predictive modeling can help researchers **gain deeper insight into the complex interactions that contribute to the onset of neurodegenerative disorders**.
+   
+Beyond clinical impact, creating a predictive model encourages the integration of modern **data-driven approaches** into neurological healthcare. As medicine increasingly embraces digital tools, predictive modeling stands out as a promising path to **more personalized and proactive patient care**. In the context of Parkinson’s disease, such a model could become an **essential component of future screening programs**, ultimately **contributing to earlier intervention**, improved outcomes, and a more informed understanding of this challenging condition.
+
+<h5 style="text-align: center;color: black;"> <b>What is the objetive of this project?</b></h5>    
+                   
+A set of demographic, lifestyle, clinical, cognitive, and symptom-related variables collected from a patient cohort, was used in this project. By integrating these diverse variables into a unified predictive framework, the project seeks to **evaluate multiple machine learning algorithms** and determine their capability to accurately identify patients at risk. The goal is not only to achieve strong **predictive performance** but also to explore **feature importance** and interpretability, enabling clinicians and researchers to better understand which factors contribute most meaningfully to diagnostic outcomes. Ultimately, this work aims to support the development of practical, **data-driven tools** that may assist in earlier and more reliable detection of Parkinson’s disease.
+   
+---
     
 ---
      
