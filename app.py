@@ -520,7 +520,7 @@ def pdf_page():
         st.pdf("./docs/Technical_Presentation_PD_ML_Project.pdf")
         st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Technical%20Presentation%20PD%20ML%20Project.pptx)")
     else:
-        video_file = open(".docs/Technical Presentation PD ML Project.mp4", "rb")
+        video_file = open("Technical Presentation PD ML Project.mp4", "rb")
         video_bytes = video_file.read()
         st.video(video_bytes)
         st.pdf("./docs/Business_Presentation_PD_ML_Project.pdf")
