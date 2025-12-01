@@ -322,7 +322,7 @@ def eda_page():
                         st.plotly_chart(fig)
                 else:
                     with col2:
-                        fig = px.scatter(train_df,x=x_data, y=y_data,trendline="ols",trendline_color_override="red",height=700,title=f"{x} vs {y} Scatterplot ")
+                        fig = px.scatter(train_df,x_data, y_data,height=700,title=f"{x} vs {y} Scatterplot ")
                         st.plotly_chart(fig,use_container_width=True)
 
 def prediction_page():
