@@ -513,19 +513,6 @@ def prediction_page():
                     except:
                         st.error("Uploaded data does not follow the described format")
 
-def pdf_page():
-    st.header("👩‍🏫 Presentations: Architecture and Scores")
-    presentation=st.segmented_control("Show:",["**Technical Presentation PDF**", "**Business Presentation PDF**"],default="**Technical Presentation PDF**")
-    if presentation=="**Technical Presentation PDF**":
-        st.pdf("./docs/Technical_Presentation_PD_ML_Project.pdf")
-        st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Technical%20Presentation%20PD%20ML%20Project.pptx)")
-    else:
-        video_file = open("Technical Presentation PD ML Project.mp4", "rb")
-        video_bytes = video_file.read()
-        st.video(video_bytes)
-        st.pdf("./docs/Business_Presentation_PD_ML_Project.pdf")
-        st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Business%20Presentation%20PD%20ML%20Project.pptx)")
-
 def author_page():
     st.header("🙋🏻‍♀️ About the Author")
     st.markdown('''
@@ -581,7 +568,6 @@ selection = st.sidebar.radio("Select Section:",
         "📊 General Statistics",
         "📈 Exploratory Data Analysis",
         "🎯 Interactive Predictions",
-        "👩‍🏫 Presentations: Architecture and Scores",
         "🙋🏻‍♀️ About the Author"),index=0)
    
 # ---------- APP BODY ----------
@@ -599,8 +585,6 @@ elif selection == "📈 Exploratory Data Analysis":
     eda_page()
 elif selection == "🎯 Interactive Predictions":
     prediction_page()
-elif selection == "👩‍🏫 Presentations: Architecture and Scores":
-    pdf_page()
 elif selection == "🙋🏻‍♀️ About the Author":   
     author_page()
     
