@@ -517,10 +517,10 @@ def pdf_page():
     st.header("👩‍🏫 Presentations: Architecture and Scores")
     presentation=st.segmented_control("Show:",["**Technical Presentation PDF**", "**Business Presentation PDF**"],default="**Technical Presentation PDF**")
     if presentation=="**Technical Presentation PDF**":
-        st.pdf("./docs/Technical Presentation PD ML Project.pdf")
+        st.pdf("./docs/Technical_Presentation_PD_ML_Project.pdf")
         st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Technical%20Presentation%20PD%20ML%20Project.pptx)")
     else:
-        st.pdf("./docs/Business Presentation PD ML Project.pdf")
+        st.pdf("./docs/Business_Presentation_PD_ML_Project.pdf")
         st.markdown("[download in powerpoint .pptx format with :rainbow[animations]](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model/blame/main/docs/Business%20Presentation%20PD%20ML%20Project.pptx)")
 
 def author_page():
