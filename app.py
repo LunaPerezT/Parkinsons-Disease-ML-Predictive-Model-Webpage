@@ -333,15 +333,15 @@ def prediction_page():
         selected_model=model1
     if num_model == "**Model 2** (sensitivity oriented model)":
         selected_model=model2
-    a,b,c=st.columns (3)
+    a,b,c=st.columns(3,gap="large",vertical_alignment= "center")
     with a:
-        with st.container():
+        with st.container(border=True):
             st.metric("Accuracy","96.9%")
     with b:
-        with st.container():
+        with st.container(border=True):
             st.metric("Specificity","95.7%")
     with c:
-        with st.container():
+        with st.container(border=True):
             st.metric("Sensitivity","97.7%")
     st.markdown("Explore more details of the ML predictive model develpment and scores on this [**github repository**](https://github.com/LunaPerezT/Parkinson-s-Disease-Predictive-ML-Model)")
     GENDER_MAP = {"Male": 0, "Female": 1}
