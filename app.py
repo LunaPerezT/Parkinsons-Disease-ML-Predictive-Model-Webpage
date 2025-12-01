@@ -302,12 +302,12 @@ def eda_page():
             st.plotly_chart(fig)
     if graph=="Numerical Features Scatter":
         num_features=["Age","BMI","Alcohol Consumption","Physical Activity","Diet Quality","Sleep Quality","Cholesterol Total","Cholesterol LDL","Cholesterol HDL","Cholesterol Triglycerides","UPDRS","MoCA","Functional Assessment","Diagnosis"]
-        x=st.pills("Select x axis", num_features)
+        x=st.pills("Select x axis", num_features, default="Diagnosis")
         if x != None:
             x_data=x.replace(" ","")
             num_features_y=num_features
             num_features_y.remove(x)
-            y=st.pills("Select y axis", num_features_y)
+            y=st.pills("Select y axis", num_features_y, default="UPDRS")
             if y != None:
                 y_data=y.replace(" ","")
                 col1,col2,col3 =st.columns([1,5,1],gap="large")
