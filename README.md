@@ -34,9 +34,7 @@ Beyond clinical impact, creating a predictive model encourages the integration o
 <h5 style="text-align: center;color: black;"> <b>What is the objetive of this project?</b></h5>    
                    
 A set of demographic, lifestyle, clinical, cognitive, and symptom-related variables collected from a patient cohort, was used in this project. By integrating these diverse variables into a unified predictive framework, the project seeks to **evaluate multiple machine learning algorithms** and determine their capability to accurately identify patients at risk. The goal is not only to achieve strong **predictive performance** but also to explore **feature importance** and interpretability, enabling clinicians and researchers to better understand which factors contribute most meaningfully to diagnostic outcomes. Ultimately, this work aims to support the development of practical, **data-driven tools** that may assist in earlier and more reliable detection of Parkinson’s disease.
-   
----
-    
+
 ---
      
 ## 🌐 Repository Structure Overview
