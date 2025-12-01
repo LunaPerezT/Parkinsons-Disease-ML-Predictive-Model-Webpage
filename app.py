@@ -90,7 +90,7 @@ This structure aims to ensure clarity, methodological rigor, and full reproducib
     """)
     
 def introduction_page():
-    st.header("🏠 Home")
+    st.header("📚 Introduction")
     
     st.markdown("""
 <h5 style="text-align: center;color: black;"> <b>What Is Parkinson’s Disease?</b></h5>
@@ -318,7 +318,7 @@ def eda_page():
                         st.plotly_chart(fig)
                 elif y_data=="Diagnosis":
                     with col2:
-                        fig = px.violin(train_df, x=x_data,y=y_data,orientation="h", box=True,height=700,title=f"{y} distribution by diagnosis violin plot")
+                        fig = px.violin(train_df, x_data, y_data,orientation="h", box=True,height=700,title=f"{y} distribution by diagnosis violin plot")
                         st.plotly_chart(fig)
                 else:
                     with col2:
